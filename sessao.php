@@ -1,11 +1,15 @@
 <?php
 
     session_start();
-    if(isset($_SESSION) || $_SESSION['logado'] == false) {
+
+    if(!isset($_SESSION['logado']) 
+         || $_SESSION['logado'] == false) {
         header('Location: index.php');
-    } else{
-        echo "Bem vindo " . $_SESSION['login'];
-        header('location: aluno/index.php');  
+        exit;
     }
+
+    echo "Bem vindo, " . $_SESSION['login'];
+    echo "<br><a href='../logout.php'>Sair</a>";
+
 
 ?>
